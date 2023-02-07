@@ -1,2 +1,1 @@
-# CRC
-Cloud Resume Challenge - GCP Edition
+# CRC - Cloud Resume Challenge - GCP Edition
