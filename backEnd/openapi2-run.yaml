@@ -1,0 +1,34 @@
+# openapi2-run.yaml
+swagger: '2.0'
+info:
+  title: kcuart-api api for crc project
+  description: access datastore database to update visitorCount
+  version: 1.0.0
+schemes:
+- https
+produces:
+- application/json
+x-google-backend:
+  address: https://kkcuarterocrc-okfcy7obfq-uc.a.run.app
+paths:
+  /count:
+    post:
+      summary: increment visitor count by 1
+      operationId: incrementVisitCount
+      responses:
+        '200': 
+          description: Visitor count updated
+          schema:
+            type: string
+            properties:
+              count:
+                type: integer
+                format: int32 
+    get:
+      summary: view current count
+      operationId: getCount
+      responses:
+        '200':
+          description: retrieve count
+          schema:
+            type: string
