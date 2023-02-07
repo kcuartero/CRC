@@ -1,0 +1,8 @@
+[
+    {
+      "origin": ["https://kcuartero.info/"],
+      "responseHeader": ["*"],
+      "method": ["GET"],
+      "maxAgeSeconds": 3600
+    }
+  ]
