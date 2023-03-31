@@ -1,7 +1,7 @@
 updateVisitorCount(); 
 
 function updateVisitorCount() {
-    fetch('https://kcuart-gw-76btakhm.uc.gateway.dev/count')
+    fetch('https://kcuartero-gw-5u3b1jgg.uc.gateway.dev/count')
         .then(response => {
         return response.json();
         })
