@@ -37,3 +37,8 @@ variable "cors" {
   type = string
   default = "/Users/kcuartero/Documents/Documents - Kevin’s MacBook Pro/Cloud Resume Challenge/kkcuartero_crc/frontEnd/cors.json"
 }
+
+variable "api_cfg" {
+  type = string
+  default = "/Users/kcuartero/Documents/Documents - Kevin’s MacBook Pro/Cloud Resume Challenge/kkcuartero_crc/backEnd/openapi2-run.yaml"
+}

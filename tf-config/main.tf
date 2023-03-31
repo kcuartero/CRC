@@ -140,7 +140,7 @@ resource "google_api_gateway_api_config" "api_cfg" {
   openapi_documents {
     document {
       path              = "openapi2-run.yaml"
-      contents = filebase64("/Users/kcuartero/Documents/Documents - Kevin’s MacBook Pro/Cloud Resume Challenge/kkcuartero_crc/backEnd/openapi2-run.yaml")
+      contents          = filebase64(var.api_cfg)
     }
   }
   lifecycle {
