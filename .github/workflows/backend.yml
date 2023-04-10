@@ -1,0 +1,40 @@
+name: Backend CI/CD
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'backend/**'
+
+jobs:
+  deploy backend:
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+    name: Deploy python function
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - id: 'auth'
+      name: 'Authenticate to Google Cloud'
+      uses: 'google-github-actions/auth@v1'
+      with:
+        workload_identity_provider: 'projects/457324236736/locations/global/workloadIdentityPools/gha-pool/providers/gha-provider'
+        service_account: 'gha-service@kcuartero-crc-tf.iam.gserviceaccount.com'
+
+    - name: install python dependencies
+      uses: py-actions/py-dependency-install@v4
+      with:
+        path: "backend/requirements.txt"
+    
+    - name: cypress e2e test
+      uses: cypress-io/github-action@v5
+      with:
+        spec: cypress/e2e/test.cy.js 
+
+    - name: deploy cloud run function
+      uses: 'google-github-actions/deploy-cloudrun@v1'
+      with:
+        service: 'app'
+        image: 'us-central1-docker.pkg.dev/kcuartero-crc-tf/kcuartero-repo/bb8bd4f5c4d9:latest'
