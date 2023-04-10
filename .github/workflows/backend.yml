@@ -7,7 +7,7 @@ on:
       - 'backend/**'
 
 jobs:
-  deploy backend:
+  deploy_backend:
     permissions:
       contents: 'read'
       id-token: 'write'
