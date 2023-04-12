@@ -7,7 +7,7 @@ from google.cloud import datastore
 app = Flask(__name__)
 CORS(app)
 
-#initialize a datastore client and entity  
+#initialize a datastore client and entity
 client = datastore.Client(project="kcuartero-crc-tf")
 entityRef = client.key("visitorCount", 5634161670881280)
 
