@@ -3,7 +3,7 @@ from flask import Flask, request
 from flask_cors import CORS
 from google.cloud import datastore  
 
-#initialize flask app
+#initialize flask app 
 app = Flask(__name__)
 CORS(app)
 
