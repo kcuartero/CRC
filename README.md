@@ -1,4 +1,4 @@
-![The Cloud Resume Challenge - GCP Edition](https://github.com/kcuartero/crc-backend/assets/30248294/96231877-5668-445d-99cf-495d1e94cf78)
+![The Cloud Resume Challenge - GCP Edition](https://github.com/kcuartero/crc-backend/assets/30248294/3563edfd-bad9-41fe-a255-d582d98ed5c8)
 # Cloud Resume Challenge - GCP Edition (Backend)
 
 The Cloud Resume Challenge is a multiple-step resume project which helps build and demonstrate skills fundamental to pursuing a career as a Cloud/DevOps Engineer. 
