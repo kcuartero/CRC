@@ -20,8 +20,8 @@ jobs:
       name: 'Authenticate to Google Cloud'
       uses: 'google-github-actions/auth@v1'
       with:
-        workload_identity_provider: 'projects/457324236736/locations/global/workloadIdentityPools/gha-pool/providers/gha-provider'
-        service_account: 'gha-service@kcuartero-crc-tf.iam.gserviceaccount.com'
+        workload_identity_provider: 'projects/963101158742/locations/global/workloadIdentityPools/gha-pool/providers/gha-provider'
+        service_account: 'gha-service@crc-take2.iam.gserviceaccount.com'
 
     - name: install python dependencies
       uses: py-actions/py-dependency-install@v4
