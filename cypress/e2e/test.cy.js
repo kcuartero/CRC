@@ -5,5 +5,11 @@ describe('CRC E2E Test', () => {
       expect(response.status).to.eq(200) //check http response if OK(200)
       expect(response.body).to.have.property('count') //check if the API returns count value
     }) 
+<<<<<<< HEAD
   }) 
 })
+=======
+  })
+})
+      
+>>>>>>> 8c147d8c7c9f4052b7e9b6b80fa38aedc1223d48
