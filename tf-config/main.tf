@@ -41,7 +41,7 @@ resource "google_cloud_run_service" "run_service" {
   template {
     spec {
       containers {
-        image = "us-central1-docker.pkg.dev/kcuartero-crc-tf/kcuartero-repo/bb8bd4f5c4d9:latest"
+        image = "us-central1-docker.pkg.dev/crc-take2/kcuartero-repo/crc2-backend:latest"
       }
     }
   }
@@ -70,9 +70,9 @@ output "service_url" {
   value = google_cloud_run_service.run_service.status[0].url
 }
 
-  resource "google_storage_bucket" "kcuartero_resume" {
+  resource "google_storage_bucket" "kcuartero_resume2" {
   force_destroy            = false
-  name                     = "kcuartero_resume"
+  name                     = "kcuartero_resume2"
   location                 = "US"
   project                  = var.project_id
   public_access_prevention = "inherited"
@@ -90,7 +90,7 @@ output "service_url" {
 }
 
 resource "google_storage_default_object_access_control" "public_rule" {
-  bucket = google_storage_bucket.kcuartero_resume.name
+  bucket = google_storage_bucket.kcuartero_resume2.name
   role   = "READER"
   entity = "allUsers"
 }
@@ -98,28 +98,28 @@ resource "google_storage_default_object_access_control" "public_rule" {
 resource "google_storage_bucket_object" "index" {
   name = "index.html"
   source = var.index 
-  bucket = google_storage_bucket.kcuartero_resume.name
+  bucket = google_storage_bucket.kcuartero_resume2.name
   depends_on = [google_storage_default_object_access_control.public_rule]
 }
 
 resource "google_storage_bucket_object" "update_function" {
   name = "updateVisitorCount.js"
   source = var.updateFunction
-  bucket = google_storage_bucket.kcuartero_resume.name
+  bucket = google_storage_bucket.kcuartero_resume2.name
   depends_on = [google_storage_default_object_access_control.public_rule]
 }
 
 resource "google_storage_bucket_object" "style_css" {
   name = "style.css"
   source = var.style_css
-  bucket = google_storage_bucket.kcuartero_resume.name
+  bucket = google_storage_bucket.kcuartero_resume2.name
 depends_on = [google_storage_default_object_access_control.public_rule]
 }
 
 resource "google_storage_bucket_object" "cors" {
   name = "cors.json"
   source = var.cors
-  bucket = google_storage_bucket.kcuartero_resume.name
+  bucket = google_storage_bucket.kcuartero_resume2.name
   depends_on = [google_storage_default_object_access_control.public_rule]
 }
 
@@ -172,17 +172,17 @@ resource "google_artifact_registry_repository" "kcuartero-repo" {
   format = "DOCKER"
 }
 
-#create LB backend buckets
+#create LB = buckets
 resource "google_compute_backend_bucket" "kcuartero_bucket" {
   name = "kcuartero-backend"
-  bucket_name = google_storage_bucket.kcuartero_resume.name
+  bucket_name = google_storage_bucket.kcuartero_resume2.name
 }
 
 resource "google_compute_managed_ssl_certificate" "default" {
   name = "kcuartero-cert"
 
   managed {
-    domains = ["kcuartero.info"]
+    domains = ["kcuartero.cloud"]
   }
 }
 
@@ -242,5 +242,5 @@ resource "google_compute_global_forwarding_rule" "default" {
 #create dns managed zone
 resource "google_dns_managed_zone" "kcuartero-zone" {
   name = "kcuartero-dns-zone"
-  dns_name = "kcuartero.info."
+  dns_name = "kcuartero.cloud."
 }
