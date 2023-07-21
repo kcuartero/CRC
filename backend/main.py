@@ -8,7 +8,7 @@ app = Flask(__name__)
 CORS(app)
 
 #initialize a datastore client and entity  
-client = datastore.Client(project="kcuartero-crc-tf")
+client = datastore.Client(project="crc-take2")
 entityRef = client.key("visitorCount", 5634161670881280)
 
 # add +1 to visitorCount
