@@ -37,4 +37,4 @@ jobs:
       uses: 'google-github-actions/deploy-cloudrun@v1'
       with:
         service: 'app'
-        image: 'us-central1-docker.pkg.dev/crc-take2/kcuartero-repo/c39055cf7619:latest'
+        image: 'us-central1-docker.pkg.dev/crc-take2/kcuartero-repo/crc2-backend:latest'
